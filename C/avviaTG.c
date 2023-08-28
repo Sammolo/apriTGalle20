@@ -37,6 +37,7 @@ int main()
             ora = getOra(); //prendo l'ora attuale
             if (ora>=20) //se sono le 20 o più tardi
             {
+                //system("C:\Program Files\Google\Chrome\Application\chrome.exe https://tg.la7.it/ultime-edizioni-del-tgla7")
                 printf("Funziona!"); //apro l'url su chrome
                 check++; //aumento il check per uscire dal ciclo
             }
