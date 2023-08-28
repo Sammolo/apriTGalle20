@@ -1,0 +1,2 @@
+PowerShell -Command "Set-ExecutionPolicy Unrestricted" >> "%TEMP%\StartupLog.txt"
+PowerShell -windowstyle hidden C:\Users\pasqu\Documents\Modelli di Office personalizzati\Esperimenti\apriTG_ottimizzato.ps1 >> "%TEMP%\StartupLog.txt"
