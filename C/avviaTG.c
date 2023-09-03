@@ -65,15 +65,5 @@ void main()
             dataInizio = dataOggi;
         }
     }      
-        
-             
-                
-                
-                    
-                    
-                
-        
-        
-            
-            
+              
 }
