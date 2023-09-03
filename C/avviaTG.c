@@ -23,36 +23,57 @@ int getOra(){
 
 
 
-int main()
+void main()
 {    
-    int dataInizio = getNumGiorno(); //prendo la data di quando ho acceso il computer
-    int check, ora = 0; 
-    char url[43] = "https://tg.la7.it/ultime-edizioni-del-tgla7"; //url
+    //prendo la data del giorno in cui il programma inizia
+    int dataInizio = getNumGiorno();
+    //creo il check
+    bool check = false;
+    //creo la variabile ora
+    int hh;
 
+    //entro nel while true
     while (true)
     {
-        //finchè non sono 20 o più tardi, non esce dal ciclo
-        while (check==0) 
+        //prendo la data di oggi
+        int dataOggi = getNumGiorno();
+        //se le due date sono uguali, quindi non è passato un giorno
+        if (dataOggi == dataInizio)
         {
-            ora = getOra(); //prendo l'ora attuale
-            if (ora>=20) //se sono le 20 o più tardi
+            //entro in un loop in cui controllo lo stato del check
+            while (check == false) //finchè non aggiorno il check, cioè finchè non ho aperto il TG
             {
-                //system("C:\Program Files\Google\Chrome\Application\chrome.exe https://tg.la7.it/ultime-edizioni-del-tgla7")
-                printf("Funziona!"); //apro l'url su chrome
-                check++; //aumento il check per uscire dal ciclo
+                //prendo l'ora
+                hh = getOra();
+                //se sono le 20 o più tardi
+                if (hh >= 12)
+                {
+                    //avvio il tg
+                    printf("Apro il TG");
+                    //aumento il check per uscire dal loop
+                    check = true;
+                }
+                //altrimenti resto nel loop
             }
-            //sleep(30); //fermo il programma per 
         }
-
-        //ho aperto il link, ora aspetto il giorno successivo per poter rientrare nel loop
-        int dataOggi = getNumGiorno();  //prendo la data di questo momento 
-        if (dataInizio != dataOggi) //se l'avvio del programma non coincide con oggi, 
-        //cioè è passato un giorno
+        //altrimenti se le due date sono diverse, cioè è passato un giorno
+        else
         {
-            check--; //ripristino il check
-            dataInizio = dataOggi; //aggiorno la data di inizio del programma con oggi
+            //azzero il check
+            check = false;
+            //aggiorno la prima data 
+            dataInizio = dataOggi;
         }
-        //sleep(30); //fermo il programma per 
-    }
-    return 0;
+    }      
+        
+             
+                
+                
+                    
+                    
+                
+        
+        
+            
+            
 }
