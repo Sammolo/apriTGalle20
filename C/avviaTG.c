@@ -27,42 +27,39 @@ void main()
 {    
     //prendo la data del giorno in cui il programma inizia
     int dataInizio = getNumGiorno();
-    //creo il check
-    bool check = false;
-    //creo la variabile ora
-    int hh;
+    
+
 
     //entro nel while true
     while (true)
     {
-        //prendo la data di oggi
-        int dataOggi = getNumGiorno();
-        //se le due date sono uguali, quindi non è passato un giorno
-        if (dataOggi == dataInizio)
-        {
-            //entro in un loop in cui controllo lo stato del check
-            while (check == false) //finchè non aggiorno il check, cioè finchè non ho aperto il TG
+        bool check = false;
+        int hh = getOra(); //prendo l'ora
+        if(hh >= 20){ //se sono passate le 20 
+            printf("Aprirò il TG perchè sono le %i \n", hh);
+            while (check == false) //finchè non cambia di giorno
             {
-                //prendo l'ora
-                hh = getOra();
-                //se sono le 20 o più tardi
-                if (hh >= 12)
+                int oggi = getNumGiorno();
+                if (oggi == dataInizio) //se la data di oggi coincide con la data di inizio del programma
                 {
-                    //avvio il tg
-                    printf("Apro il TG");
-                    //aumento il check per uscire dal loop
-                    check = true;
-                }
-                //altrimenti resto nel loop
+                    sleep(3600); //faccio dormire il programma un'ora prima di ricontrollare il giorno
+                } else { //se il giorno di oggi è diverso dal giorno in cui è iniziato il programma
+                    printf("E' cambiato giorno!");
+                    check = true; //aggiorno in check ed esco da questo loop
+                } 
             }
+            
         }
-        //altrimenti se le due date sono diverse, cioè è passato un giorno
-        else
+        else if (hh < 18) //se non sono ancora le 18, ricontrollo l'orario ogni 2 ore
         {
-            //azzero il check
-            check = false;
-            //aggiorno la prima data 
-            dataInizio = dataOggi;
+            sleep(7200);
+        }
+        else if (hh > 18 && hh < 20) //se è tra le 18 e le 20, ricontrollo l'orario ogni 15 minuti
+        {
+            sleep(900);
+        } 
+        else { // in caso di problemi vari, ricontrollo l'orario ogni 30 minuti
+            sleep(1800);
         }
     }      
               
