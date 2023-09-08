@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 
 int getNumGiorno(){
@@ -36,6 +37,7 @@ void main()
         bool check = false;
         int hh = getOra(); //prendo l'ora
         if(hh >= 20){ //se sono passate le 20 
+            system("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe https:\\www.google.com");
             printf("Aprirò il TG perchè sono le %i \n", hh);
             while (check == false) //finchè non cambia di giorno
             {
