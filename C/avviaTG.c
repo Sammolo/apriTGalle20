@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 
 int getNumGiorno(){
@@ -23,35 +24,45 @@ int getOra(){
 
 
 
-int main()
+void main()
 {    
-    int dataInizio = getNumGiorno(); //prendo la data di quando ho acceso il computer
-    int check, ora = 0; 
-    char url[43] = "https://tg.la7.it/ultime-edizioni-del-tgla7"; //url
+    //prendo la data del giorno in cui il programma inizia
+    int dataInizio = getNumGiorno();
+    
 
+
+    //entro nel while true
     while (true)
     {
-        //finchè non sono 20 o più tardi, non esce dal ciclo
-        while (check==0) 
-        {
-            ora = getOra(); //prendo l'ora attuale
-            if (ora>=20) //se sono le 20 o più tardi
+        bool check = false;
+        int hh = getOra(); //prendo l'ora
+        if(hh >= 20){ //se sono passate le 20 
+            system("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe https:\\www.google.com");
+            printf("Aprirò il TG perchè sono le %i \n", hh);
+            while (check == false) //finchè non cambia di giorno
             {
-                printf("Funziona!"); //apro l'url su chrome
-                check++; //aumento il check per uscire dal ciclo
+                int oggi = getNumGiorno();
+                if (oggi == dataInizio) //se la data di oggi coincide con la data di inizio del programma
+                {
+                    sleep(3600); //faccio dormire il programma un'ora prima di ricontrollare il giorno
+                } else { //se il giorno di oggi è diverso dal giorno in cui è iniziato il programma
+                    printf("E' cambiato giorno!");
+                    check = true; //aggiorno in check ed esco da questo loop
+                } 
             }
-            //sleep(30); //fermo il programma per 
+            
         }
-
-        //ho aperto il link, ora aspetto il giorno successivo per poter rientrare nel loop
-        int dataOggi = getNumGiorno();  //prendo la data di questo momento 
-        if (dataInizio != dataOggi) //se l'avvio del programma non coincide con oggi, 
-        //cioè è passato un giorno
+        else if (hh < 18) //se non sono ancora le 18, ricontrollo l'orario ogni 2 ore
         {
-            check--; //ripristino il check
-            dataInizio = dataOggi; //aggiorno la data di inizio del programma con oggi
+            sleep(7200);
         }
-        //sleep(30); //fermo il programma per 
-    }
-    return 0;
+        else if (hh > 18 && hh < 20) //se è tra le 18 e le 20, ricontrollo l'orario ogni 15 minuti
+        {
+            sleep(900);
+        } 
+        else { // in caso di problemi vari, ricontrollo l'orario ogni 30 minuti
+            sleep(1800);
+        }
+    }      
+              
 }
