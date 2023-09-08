@@ -38,7 +38,7 @@ void main()
         int hh = getOra(); //prendo l'ora
         if(hh >= 20){ //se sono passate le 20 
             system("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe https:\\www.google.com");
-            printf("Aprirò il TG perchè sono le %i \n", hh);
+            //printf("Aprirò il TG perchè sono le %i \n", hh);
             while (check == false) //finchè non cambia di giorno
             {
                 int oggi = getNumGiorno();
@@ -46,7 +46,7 @@ void main()
                 {
                     sleep(3600); //faccio dormire il programma un'ora prima di ricontrollare il giorno
                 } else { //se il giorno di oggi è diverso dal giorno in cui è iniziato il programma
-                    printf("E' cambiato giorno!");
+                    //printf("E' cambiato giorno!");
                     check = true; //aggiorno in check ed esco da questo loop
                 } 
             }
