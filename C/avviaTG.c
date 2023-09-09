@@ -28,7 +28,7 @@ void main()
 {    
     //prendo la data del giorno in cui il programma inizia
     int dataInizio = getNumGiorno();
-    
+    char *url = "start https://tg.la7.it/";
 
 
     //entro nel while true
@@ -37,7 +37,7 @@ void main()
         bool check = false;
         int hh = getOra(); //prendo l'ora
         if(hh >= 20){ //se sono passate le 20 
-            system("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe https:\\www.google.com");
+            system(url);
             //printf("Aprirò il TG perchè sono le %i \n", hh);
             while (check == false) //finchè non cambia di giorno
             {
